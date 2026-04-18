@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // This tells Next.js to build into 'next.js' instead of '.next'
+  distDir: 'next.js', 
 };
 
 export default nextConfig;
