@@ -29,8 +29,20 @@ export default function Experience() {
     <Canvas
       className="w-full h-screen"
       shadows
+
+      //  PERFORMANCE OPTIMIZATION
+      dpr={[1, 1.5]}
+      flat
+      linear
+      gl={{
+        antialias: true,
+        powerPreference: 'high-performance',
+        alpha: false,
+        stencil: false,
+        depth: true,
+      }}
+
       camera={{ position: [0, 0, 4], fov: 35 }}
-      gl={{ antialias: true }}
     >
       {/* LIGHTING */}
       <ambientLight intensity={1.2} />
