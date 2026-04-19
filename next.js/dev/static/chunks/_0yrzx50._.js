@@ -142,18 +142,18 @@ function Overlay() {
             const el = containerRef.current;
             if (!el) return;
             // RESET
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].set(el, {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].set(el, {
                 opacity: 1
             });
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].set(el.querySelectorAll('.color-btn'), {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].set(el.querySelectorAll('.color-btn'), {
                 opacity: 1,
                 y: 0
             });
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].set(el.querySelectorAll('.cta-btn'), {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].set(el.querySelectorAll('.cta-btn'), {
                 opacity: 1,
                 scale: 1
             });
-            const tl = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].timeline();
+            const tl = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].timeline();
             tl.from(el, {
                 opacity: 0,
                 duration: 0.5
@@ -185,7 +185,7 @@ function Overlay() {
                 ease: 'back.out(1.8)'
             }, '-=0.3');
             //  FIX 2: AI glow pulse (alive feeling)
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].to('.ai-badge', {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].to('.ai-badge', {
                 boxShadow: '0 0 20px rgba(255,255,255,0.6)',
                 repeat: -1,
                 yoyo: true,
@@ -193,7 +193,7 @@ function Overlay() {
                 ease: 'sine.inOut'
             });
             // Floating motion
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].to(el, {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].to(el, {
                 y: 10,
                 duration: 3,
                 ease: 'sine.inOut',
@@ -205,7 +205,7 @@ function Overlay() {
                 "Overlay.useEffect.move": (e)=>{
                     const x = (e.clientX / window.innerWidth - 0.5) * 10;
                     const y = (e.clientY / window.innerHeight - 0.5) * 10;
-                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].to(el, {
+                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].to(el, {
                         x: x * 0.3,
                         y: y * 0.3,
                         duration: 0.6
@@ -224,7 +224,7 @@ function Overlay() {
     ]);
     // Hover animation +  FIX 4 (AI reacts)
     const handleHover = (e, enter)=>{
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].to(e.currentTarget, {
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].to(e.currentTarget, {
             scale: enter ? 1.2 : 1,
             boxShadow: enter ? '0 0 20px rgba(255,255,255,0.4)' : '0 0 0px rgba(0,0,0,0)',
             duration: 0.3,
@@ -232,7 +232,7 @@ function Overlay() {
         });
         //  AI reacts to interaction
         if (enter) {
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].fromTo('.ai-badge', {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].fromTo('.ai-badge', {
                 scale: 1
             }, {
                 scale: 1.1,
@@ -244,7 +244,7 @@ function Overlay() {
     };
     // Press animation
     const handlePress = (e)=>{
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].fromTo(e.currentTarget, {
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].fromTo(e.currentTarget, {
             scale: 1.2
         }, {
             scale: 0.9,

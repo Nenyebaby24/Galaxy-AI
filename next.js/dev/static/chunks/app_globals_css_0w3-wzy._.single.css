@@ -9,6 +9,11 @@
       --tw-skew-y: initial;
       --tw-border-style: solid;
       --tw-tracking: initial;
+      --tw-ordinal: initial;
+      --tw-slashed-zero: initial;
+      --tw-numeric-figure: initial;
+      --tw-numeric-spacing: initial;
+      --tw-numeric-fraction: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;
@@ -81,6 +86,14 @@
 
 .sticky {
   position: sticky;
+}
+
+.isolate {
+  isolation: isolate;
+}
+
+.z-0 {
+  z-index: 0;
 }
 
 .z-50 {
@@ -260,6 +273,11 @@
   font-style: italic;
 }
 
+.tabular-nums {
+  --tw-numeric-spacing: tabular-nums;
+  font-variant-numeric: var(--tw-ordinal, ) var(--tw-slashed-zero, ) var(--tw-numeric-figure, ) var(--tw-numeric-spacing, ) var(--tw-numeric-fraction, );
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -323,12 +341,12 @@
   key: �4ng;
 }
 
-.\[key\:a\7 4ng\] {
-  key: a4ng;
-}
-
 .\[key\:\7f s4ng\] {
   key: s4ng;
+}
+
+.\[key\:�\3 4ng\] {
+  key: �4ng;
 }
 
 .\[key\:�t4ng\] {
@@ -602,6 +620,31 @@ canvas {
 }
 
 @property --tw-tracking {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-ordinal {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-slashed-zero {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-numeric-figure {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-numeric-spacing {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-numeric-fraction {
   syntax: "*";
   inherits: false
 }

@@ -3,15 +3,16 @@
 import React, { useRef, useLayoutEffect } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
-import gsap from 'gsap'
+import { Group, Mesh, Vector3 } from 'three'
+import { gsap } from 'gsap'
 import { useStore } from '@/store/useStore'
 
+// 🔥 Draco decoder
 useGLTF.setDecoderPath(
   'https://www.gstatic.com/draco/versioned/decoders/1.5.5/'
 )
 
-//  PRELOAD ALL MODELS (performance boost)
+// 🔥 Preload all models
 useGLTF.preload('/models/galaxy-s26-plus-black-cp.glb')
 useGLTF.preload('/models/galaxy-s26-plus-cobalt-violet-cp.glb')
 useGLTF.preload('/models/galaxy-s26-plus-pink-gold-cp.glb')
@@ -19,38 +20,35 @@ useGLTF.preload('/models/galaxy-s26-plus-silver-shadow-cp.glb')
 useGLTF.preload('/models/galaxy-s26-plus-sky-blue-cp.glb')
 useGLTF.preload('/models/galaxy-s26-plus-white-cp.glb')
 
-// LOCKED SCALE
 const FIXED_SCALE = 10.0
 
 export default function S26Model() {
   const modelPath = useStore((state) => state.modelPath)
   const { scene } = useGLTF(`/models/${modelPath}`)
 
-  const group = useRef<THREE.Group>(null!)
+  const group = useRef<Group>(null!)
 
   useLayoutEffect(() => {
     if (!scene || !group.current) return
 
     const g = group.current
 
-    // RESET
     gsap.killTweensOf(g)
     g.clear()
     g.position.set(0, 0, 0)
     g.rotation.set(0, 0, 0)
 
-    //  LIGHTER CLONE (optimization)
+    // 🔥 lighter clone
     const clonedScene = scene.clone()
     g.add(clonedScene)
 
-    // CENTER MODEL
     clonedScene.position.set(0, 0.02, 0)
 
-    const meshes: { mesh: THREE.Mesh; original: THREE.Vector3 }[] = []
+    const meshes: { mesh: Mesh; original: Vector3 }[] = []
 
     clonedScene.traverse((child) => {
-      if ((child as THREE.Mesh).isMesh) {
-        const mesh = child as THREE.Mesh
+      if ((child as Mesh).isMesh) {
+        const mesh = child as Mesh
         meshes.push({
           mesh,
           original: mesh.position.clone(),
@@ -58,7 +56,6 @@ export default function S26Model() {
       }
     })
 
-    // SCATTER
     meshes.forEach(({ mesh }) => {
       mesh.position.set(
         (Math.random() - 0.5) * 0.6,
@@ -68,7 +65,6 @@ export default function S26Model() {
       mesh.position.multiplyScalar(2)
     })
 
-    // ASSEMBLE
     meshes.forEach(({ mesh, original }, i) => {
       gsap.to(mesh.position, {
         x: original.x,
@@ -80,7 +76,6 @@ export default function S26Model() {
       })
     })
 
-    // SCALE
     g.scale.setScalar(FIXED_SCALE * 0.6)
 
     gsap.to(g.scale, {
@@ -91,19 +86,15 @@ export default function S26Model() {
       ease: 'expo.out',
     })
 
-    // MARK DONE
     const store = useStore.getState()
     if (!store.animationDone) {
       store.setAnimationDone()
     }
-
   }, [scene])
 
-  // FLOAT + ROTATION
   useFrame((state, delta) => {
     if (!group.current) return
 
-    //  SMALL OPTIMIZATION
     const t = state.clock.elapsedTime
 
     group.current.position.y =

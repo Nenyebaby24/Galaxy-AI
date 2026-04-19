@@ -20,15 +20,15 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+// 🔥 Draco decoder
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.5/');
-//  PRELOAD ALL MODELS (performance boost)
+// 🔥 Preload all models
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].preload('/models/galaxy-s26-plus-black-cp.glb');
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].preload('/models/galaxy-s26-plus-cobalt-violet-cp.glb');
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].preload('/models/galaxy-s26-plus-pink-gold-cp.glb');
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].preload('/models/galaxy-s26-plus-silver-shadow-cp.glb');
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].preload('/models/galaxy-s26-plus-sky-blue-cp.glb');
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].preload('/models/galaxy-s26-plus-white-cp.glb');
-// LOCKED SCALE
 const FIXED_SCALE = 10.0;
 function S26Model() {
     _s();
@@ -41,15 +41,13 @@ function S26Model() {
         "S26Model.useLayoutEffect": ()=>{
             if (!scene || !group.current) return;
             const g = group.current;
-            // RESET
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].killTweensOf(g);
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].killTweensOf(g);
             g.clear();
             g.position.set(0, 0, 0);
             g.rotation.set(0, 0, 0);
-            //  LIGHTER CLONE (optimization)
+            // 🔥 lighter clone
             const clonedScene = scene.clone();
             g.add(clonedScene);
-            // CENTER MODEL
             clonedScene.position.set(0, 0.02, 0);
             const meshes = [];
             clonedScene.traverse({
@@ -63,17 +61,15 @@ function S26Model() {
                     }
                 }
             }["S26Model.useLayoutEffect"]);
-            // SCATTER
             meshes.forEach({
                 "S26Model.useLayoutEffect": ({ mesh })=>{
                     mesh.position.set((Math.random() - 0.5) * 0.6, (Math.random() - 0.5) * 0.6, (Math.random() - 0.5) * 0.6);
                     mesh.position.multiplyScalar(2);
                 }
             }["S26Model.useLayoutEffect"]);
-            // ASSEMBLE
             meshes.forEach({
                 "S26Model.useLayoutEffect": ({ mesh, original }, i)=>{
-                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].to(mesh.position, {
+                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].to(mesh.position, {
                         x: original.x,
                         y: original.y,
                         z: original.z,
@@ -83,16 +79,14 @@ function S26Model() {
                     });
                 }
             }["S26Model.useLayoutEffect"]);
-            // SCALE
             g.scale.setScalar(FIXED_SCALE * 0.6);
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].to(g.scale, {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].to(g.scale, {
                 x: FIXED_SCALE,
                 y: FIXED_SCALE,
                 z: FIXED_SCALE,
                 duration: 0.8,
                 ease: 'expo.out'
             });
-            // MARK DONE
             const store = __TURBOPACK__imported__module__$5b$project$5d2f$store$2f$useStore$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStore"].getState();
             if (!store.animationDone) {
                 store.setAnimationDone();
@@ -101,11 +95,9 @@ function S26Model() {
     }["S26Model.useLayoutEffect"], [
         scene
     ]);
-    // FLOAT + ROTATION
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$events$2d$760a1017$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__D__as__useFrame$3e$__["useFrame"])({
         "S26Model.useFrame": (state, delta)=>{
             if (!group.current) return;
-            //  SMALL OPTIMIZATION
             const t = state.clock.elapsedTime;
             group.current.position.y = Math.sin(t * 1.1) * 0.08 + Math.sin(t * 0.5) * 0.03;
             group.current.rotation.y += delta * 0.45;
@@ -117,7 +109,7 @@ function S26Model() {
         ref: group
     }, void 0, false, {
         fileName: "[project]/components/canvas/S26Model.tsx",
-        lineNumber: 119,
+        lineNumber: 110,
         columnNumber: 10
     }, this);
 }
@@ -267,11 +259,12 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@react-three/fiber/dist/react-three-fiber.esm.js [app-client] (ecmascript) <locals>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$ContactShadows$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@react-three/drei/core/ContactShadows.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$web$2f$PresentationControls$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@react-three/drei/web/PresentationControls.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/shared/lib/app-dynamic.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/gsap/index.js [app-client] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$canvas$2f$S26Model$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/canvas/S26Model.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$Loader$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/Loader.tsx [app-client] (ecmascript)");
+;
+;
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
@@ -281,13 +274,32 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+// 🔥 Lazy-load heavy Drei components
+const ContactShadows = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(()=>__turbopack_context__.A("[project]/node_modules/@react-three/drei/index.js [app-client] (ecmascript, next/dynamic entry, async loader)").then((m)=>m.ContactShadows), {
+    loadableGenerated: {
+        modules: [
+            "[project]/node_modules/@react-three/drei/index.js [app-client] (ecmascript, next/dynamic entry)"
+        ]
+    },
+    ssr: false
+});
+_c = ContactShadows;
+const PresentationControls = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(()=>__turbopack_context__.A("[project]/node_modules/@react-three/drei/index.js [app-client] (ecmascript, next/dynamic entry, async loader)").then((m)=>m.PresentationControls), {
+    loadableGenerated: {
+        modules: [
+            "[project]/node_modules/@react-three/drei/index.js [app-client] (ecmascript, next/dynamic entry)"
+        ]
+    },
+    ssr: false
+});
+_c1 = PresentationControls;
 function Experience() {
     _s();
     const lightRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Experience.useEffect": ()=>{
             if (!lightRef.current) return;
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].to(lightRef.current, {
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].to(lightRef.current, {
                 intensity: 5,
                 duration: 1,
                 delay: 1,
@@ -300,7 +312,7 @@ function Experience() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
         className: "w-full h-screen",
         shadows: true,
-        //  PERFORMANCE OPTIMIZATION
+        // 🔥 GPU + RENDER OPTIMIZATION
         dpr: [
             1,
             1.5
@@ -327,7 +339,7 @@ function Experience() {
                 intensity: 1.2
             }, void 0, false, {
                 fileName: "[project]/components/canvas/Experience.tsx",
-                lineNumber: 48,
+                lineNumber: 58,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -339,7 +351,7 @@ function Experience() {
                 intensity: 1.5
             }, void 0, false, {
                 fileName: "[project]/components/canvas/Experience.tsx",
-                lineNumber: 49,
+                lineNumber: 59,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -351,7 +363,7 @@ function Experience() {
                 intensity: 0.5
             }, void 0, false, {
                 fileName: "[project]/components/canvas/Experience.tsx",
-                lineNumber: 50,
+                lineNumber: 60,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("pointLight", {
@@ -364,17 +376,17 @@ function Experience() {
                 intensity: 0
             }, void 0, false, {
                 fileName: "[project]/components/canvas/Experience.tsx",
-                lineNumber: 52,
+                lineNumber: 62,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
                 fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$Loader$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/components/canvas/Experience.tsx",
-                    lineNumber: 54,
+                    lineNumber: 64,
                     columnNumber: 27
                 }, this),
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$web$2f$PresentationControls$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PresentationControls"], {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(PresentationControls, {
                         global: true,
                         rotation: [
                             0,
@@ -391,41 +403,43 @@ function Experience() {
                         ],
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$canvas$2f$S26Model$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                             fileName: "[project]/components/canvas/Experience.tsx",
-                            lineNumber: 61,
+                            lineNumber: 71,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/canvas/Experience.tsx",
-                        lineNumber: 55,
+                        lineNumber: 65,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$ContactShadows$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ContactShadows"], {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ContactShadows, {
                         opacity: 0.4,
                         scale: 10,
                         blur: 2.4,
                         far: 1
                     }, void 0, false, {
                         fileName: "[project]/components/canvas/Experience.tsx",
-                        lineNumber: 64,
+                        lineNumber: 74,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/canvas/Experience.tsx",
-                lineNumber: 54,
+                lineNumber: 64,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/canvas/Experience.tsx",
-        lineNumber: 29,
+        lineNumber: 40,
         columnNumber: 5
     }, this);
 }
 _s(Experience, "iGQkU04+7GWaFLmgNslRj9MWCiE=");
-_c = Experience;
-var _c;
-__turbopack_context__.k.register(_c, "Experience");
+_c2 = Experience;
+var _c, _c1, _c2;
+__turbopack_context__.k.register(_c, "ContactShadows");
+__turbopack_context__.k.register(_c1, "PresentationControls");
+__turbopack_context__.k.register(_c2, "Experience");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

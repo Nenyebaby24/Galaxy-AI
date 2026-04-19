@@ -2,15 +2,26 @@
 
 import { Suspense, useRef, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { ContactShadows, PresentationControls } from '@react-three/drei'
-import * as THREE from 'three'
-import gsap from 'gsap'
+import dynamic from 'next/dynamic'
+import { PointLight } from 'three'
+import { gsap } from 'gsap'
 
 import S26Model from './S26Model'
 import Loader from '../ui/Loader'
 
+// 🔥 Lazy-load heavy Drei components
+const ContactShadows = dynamic(() =>
+  import('@react-three/drei').then((m) => m.ContactShadows),
+  { ssr: false }
+)
+
+const PresentationControls = dynamic(() =>
+  import('@react-three/drei').then((m) => m.PresentationControls),
+  { ssr: false }
+)
+
 export default function Experience() {
-  const lightRef = useRef<THREE.PointLight>(null!)
+  const lightRef = useRef<PointLight>(null!)
 
   useEffect(() => {
     if (!lightRef.current) return
@@ -30,7 +41,7 @@ export default function Experience() {
       className="w-full h-screen"
       shadows
 
-      //  PERFORMANCE OPTIMIZATION
+      // 🔥 GPU + RENDER OPTIMIZATION
       dpr={[1, 1.5]}
       flat
       linear
@@ -44,7 +55,6 @@ export default function Experience() {
 
       camera={{ position: [0, 0, 4], fov: 35 }}
     >
-      {/* LIGHTING */}
       <ambientLight intensity={1.2} />
       <directionalLight position={[5, 5, 5]} intensity={1.5} />
       <directionalLight position={[-5, -5, -5]} intensity={0.5} />

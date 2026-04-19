@@ -263,7 +263,7 @@ canvas {
 
   /* CTA FULL WIDTH FOR MOBILE */
   .cta-btn {
-    width: 100%;
+    width: 480%;
     height: 48px;
   }
 }
