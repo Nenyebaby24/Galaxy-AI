@@ -7,12 +7,12 @@ import { Group, Mesh, Vector3 } from 'three'
 import { gsap } from 'gsap'
 import { useStore } from '@/store/useStore'
 
-// 🔥 Draco decoder
+//  Draco decoder
 useGLTF.setDecoderPath(
   'https://www.gstatic.com/draco/versioned/decoders/1.5.5/'
 )
 
-// 🔥 Preload all models
+//  Preload all models
 useGLTF.preload('/models/galaxy-s26-plus-black-cp.glb')
 useGLTF.preload('/models/galaxy-s26-plus-cobalt-violet-cp.glb')
 useGLTF.preload('/models/galaxy-s26-plus-pink-gold-cp.glb')
@@ -38,7 +38,7 @@ export default function S26Model() {
     g.position.set(0, 0, 0)
     g.rotation.set(0, 0, 0)
 
-    // 🔥 lighter clone
+    //  lighter clone
     const clonedScene = scene.clone()
     g.add(clonedScene)
 
