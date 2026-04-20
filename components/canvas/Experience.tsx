@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useRef, useEffect } from 'react'
+import { Suspense, useRef, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import dynamic from 'next/dynamic'
 import { PointLight } from 'three'
@@ -9,19 +9,30 @@ import { gsap } from 'gsap'
 import S26Model from './S26Model'
 import Loader from '../ui/Loader'
 
-// 🔥 Lazy-load heavy Drei components
-const ContactShadows = dynamic(() =>
-  import('@react-three/drei').then((m) => m.ContactShadows),
+// Lazy-load heavy Drei components
+const ContactShadows = dynamic(
+  () => import('@react-three/drei').then((m) => m.ContactShadows),
   { ssr: false }
 )
 
-const PresentationControls = dynamic(() =>
-  import('@react-three/drei').then((m) => m.PresentationControls),
+const PresentationControls = dynamic(
+  () => import('@react-three/drei').then((m) => m.PresentationControls),
   { ssr: false }
 )
 
 export default function Experience() {
   const lightRef = useRef<PointLight>(null!)
+
+  //  NEW: control minimum loader display time
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setReady(true)
+    }, 800) //  adjust (600–1200ms recommended)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     if (!lightRef.current) return
@@ -40,8 +51,6 @@ export default function Experience() {
     <Canvas
       className="w-full h-screen"
       shadows
-
-      // 🔥 GPU + RENDER OPTIMIZATION
       dpr={[1, 1.5]}
       flat
       linear
@@ -52,7 +61,6 @@ export default function Experience() {
         stencil: false,
         depth: true,
       }}
-
       camera={{ position: [0, 0, 4], fov: 35 }}
     >
       <ambientLight intensity={1.2} />
@@ -61,18 +69,28 @@ export default function Experience() {
 
       <pointLight ref={lightRef} position={[0, 0, 2]} intensity={0} />
 
-      <Suspense fallback={<Loader />}>
-        <PresentationControls
-          global
-          rotation={[0, 0.3, 0]}
-          polar={[-Math.PI / 3, Math.PI / 3]}
-          azimuth={[-Math.PI / 1.4, Math.PI / 1.4]}
-        >
-          <S26Model />
-        </PresentationControls>
+      {/*  OPTION 1: Controlled Loader */}
+      {!ready ? (
+        <Loader />
+      ) : (
+        <Suspense fallback={null}>
+          <PresentationControls
+            global
+            rotation={[0, 0.3, 0]}
+            polar={[-Math.PI / 3, Math.PI / 3]}
+            azimuth={[-Math.PI / 1.4, Math.PI / 1.4]}
+          >
+            <S26Model />
+          </PresentationControls>
 
-        <ContactShadows opacity={0.4} scale={10} blur={2.4} far={1} />
-      </Suspense>
+          <ContactShadows
+            opacity={0.4}
+            scale={10}
+            blur={2.4}
+            far={1}
+          />
+        </Suspense>
+      )}
     </Canvas>
   )
 }

@@ -104,7 +104,7 @@ export default function Overlay() {
 
   }, [animationDone])
 
-  // Hover animation +  FIX 4 (AI reacts)
+  // Hover animation +  (AI reacts)
   const handleHover = (e: any, enter: boolean) => {
     gsap.to(e.currentTarget, {
       scale: enter ? 1.2 : 1,
@@ -152,7 +152,7 @@ export default function Overlay() {
         {/* BOTTOM */}
         <div className="bottom-block">
 
-          {/*  FIX 3: AI-driven narrative */}
+          {/* AI-driven narrative */}
           <p className="description">
             Powered by Galaxy AI to adapt, respond, and elevate every interaction—faster, smarter, and effortlessly intuitive.
           </p>

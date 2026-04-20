@@ -222,7 +222,7 @@ function Overlay() {
     }["Overlay.useEffect"], [
         animationDone
     ]);
-    // Hover animation +  FIX 4 (AI reacts)
+    // Hover animation +  (AI reacts)
     const handleHover = (e, enter)=>{
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].to(e.currentTarget, {
             scale: enter ? 1.2 : 1,

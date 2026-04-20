@@ -20,9 +20,9 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-// 🔥 Draco decoder
+//  Draco decoder
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.5/');
-// 🔥 Preload all models
+//  Preload all models
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].preload('/models/galaxy-s26-plus-black-cp.glb');
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].preload('/models/galaxy-s26-plus-cobalt-violet-cp.glb');
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Gltf$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useGLTF"].preload('/models/galaxy-s26-plus-pink-gold-cp.glb');
@@ -45,11 +45,12 @@ function S26Model() {
             g.clear();
             g.position.set(0, 0, 0);
             g.rotation.set(0, 0, 0);
-            // 🔥 lighter clone
+            //  lighter clone
             const clonedScene = scene.clone();
             g.add(clonedScene);
             clonedScene.position.set(0, 0.02, 0);
             const meshes = [];
+            console.log(meshes.length);
             clonedScene.traverse({
                 "S26Model.useLayoutEffect": (child)=>{
                     if (child.isMesh) {
@@ -274,7 +275,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-// 🔥 Lazy-load heavy Drei components
+// Lazy-load heavy Drei components
 const ContactShadows = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(()=>__turbopack_context__.A("[project]/node_modules/@react-three/drei/index.js [app-client] (ecmascript, next/dynamic entry, async loader)").then((m)=>m.ContactShadows), {
     loadableGenerated: {
         modules: [
@@ -296,6 +297,21 @@ _c1 = PresentationControls;
 function Experience() {
     _s();
     const lightRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    //  NEW: control minimum loader display time
+    const [ready, setReady] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Experience.useEffect": ()=>{
+            const timer = setTimeout({
+                "Experience.useEffect.timer": ()=>{
+                    setReady(true);
+                }
+            }["Experience.useEffect.timer"], 800) //  adjust (600–1200ms recommended)
+            ;
+            return ({
+                "Experience.useEffect": ()=>clearTimeout(timer)
+            })["Experience.useEffect"];
+        }
+    }["Experience.useEffect"], []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Experience.useEffect": ()=>{
             if (!lightRef.current) return;
@@ -312,7 +328,6 @@ function Experience() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
         className: "w-full h-screen",
         shadows: true,
-        // 🔥 GPU + RENDER OPTIMIZATION
         dpr: [
             1,
             1.5
@@ -339,7 +354,7 @@ function Experience() {
                 intensity: 1.2
             }, void 0, false, {
                 fileName: "[project]/components/canvas/Experience.tsx",
-                lineNumber: 58,
+                lineNumber: 66,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -351,7 +366,7 @@ function Experience() {
                 intensity: 1.5
             }, void 0, false, {
                 fileName: "[project]/components/canvas/Experience.tsx",
-                lineNumber: 59,
+                lineNumber: 67,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -363,7 +378,7 @@ function Experience() {
                 intensity: 0.5
             }, void 0, false, {
                 fileName: "[project]/components/canvas/Experience.tsx",
-                lineNumber: 60,
+                lineNumber: 68,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("pointLight", {
@@ -376,15 +391,15 @@ function Experience() {
                 intensity: 0
             }, void 0, false, {
                 fileName: "[project]/components/canvas/Experience.tsx",
-                lineNumber: 62,
+                lineNumber: 70,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
-                fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$Loader$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-                    fileName: "[project]/components/canvas/Experience.tsx",
-                    lineNumber: 64,
-                    columnNumber: 27
-                }, this),
+            !ready ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$Loader$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                fileName: "[project]/components/canvas/Experience.tsx",
+                lineNumber: 74,
+                columnNumber: 9
+            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
+                fallback: null,
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(PresentationControls, {
                         global: true,
@@ -403,13 +418,13 @@ function Experience() {
                         ],
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$canvas$2f$S26Model$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                             fileName: "[project]/components/canvas/Experience.tsx",
-                            lineNumber: 71,
-                            columnNumber: 11
+                            lineNumber: 83,
+                            columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/canvas/Experience.tsx",
-                        lineNumber: 65,
-                        columnNumber: 9
+                        lineNumber: 77,
+                        columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ContactShadows, {
                         opacity: 0.4,
@@ -418,23 +433,23 @@ function Experience() {
                         far: 1
                     }, void 0, false, {
                         fileName: "[project]/components/canvas/Experience.tsx",
-                        lineNumber: 74,
-                        columnNumber: 9
+                        lineNumber: 86,
+                        columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/canvas/Experience.tsx",
-                lineNumber: 64,
-                columnNumber: 7
+                lineNumber: 76,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/canvas/Experience.tsx",
-        lineNumber: 40,
+        lineNumber: 51,
         columnNumber: 5
     }, this);
 }
-_s(Experience, "iGQkU04+7GWaFLmgNslRj9MWCiE=");
+_s(Experience, "c5JwGBQA49n8ATF5citbw2c0sq8=");
 _c2 = Experience;
 var _c, _c1, _c2;
 __turbopack_context__.k.register(_c, "ContactShadows");

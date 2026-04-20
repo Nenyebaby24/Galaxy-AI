@@ -43,9 +43,9 @@ export default function S26Model() {
     g.add(clonedScene)
 
     clonedScene.position.set(0, 0.02, 0)
-
+    
     const meshes: { mesh: Mesh; original: Vector3 }[] = []
-
+     console.log(meshes.length)
     clonedScene.traverse((child) => {
       if ((child as Mesh).isMesh) {
         const mesh = child as Mesh
