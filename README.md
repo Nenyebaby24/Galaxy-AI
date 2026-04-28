@@ -69,10 +69,9 @@ Sets up the 3D environment and rendering pipeline.
 * Initializes <Canvas> from React Three Fiber
 * Configures camera, lighting, and performance settings
 * Wraps model with:
-
-  * Stage (scene composition)
-  * PresentationControls (user interaction)
-  * ContactShadows (ground realism)
+* Stage (scene composition)
+* PresentationControls (user interaction)
+* ContactShadows (ground realism)
 * Handles loading fallback via Suspense
 
 ### Key Features:
@@ -146,7 +145,7 @@ Centralized state for model control and animation synchronization.
 
 ### Role:
 
-Composes the **entire experience layout.
+Composes the entire experience layout.
 
 ### Responsibilities:
 
@@ -243,15 +242,46 @@ This ensures:
 
 
 
-#  Future Improvements (Optional)
+#  Future Improvements 
 
-* Camera parallax synced with cursor
-* AI energy shader effects
-* Sound design integration
-* Performance optimization (LOD / lazy loading)
+* While the current prototype prioritizes visual fidelity and interaction quality, a future optimization pass would focus on improving runtime performance and asset efficiency.
+
+# Rendering Optimization
+Current model metrics:
+* 31 Draw Calls
+* 31 Materials
+
+Planned improvements:
+* Reduce Draw Calls through mesh merging/batching where appropriate.
+* Consolidate Materials by reusing shared shaders/materials and reducing GPU state changes.
+* Texture Atlasing to combine multiple material textures into fewer texture sets.
+* GLTF Optimization Pass using tools such as Blender, glTF-Transform, or gltfpack to reduce asset overhead.
+
+Expected outcome:
+* Lower CPU → GPU overhead  
+* Improved frame performance  
+* Better scalability across lower-powered devices
 
 
 
-Built for creative storytelling, not just rendering.
+# Texture Compression (KTX2 / Basis Universal)
+Future asset pipeline improvements include migrating textures to KTX2 compression for:
+
+* Smaller texture payloads
+* Faster model load times
+* Reduced GPU memory usage
+* Better runtime performance, especially on mobile devices
+
+   Planned integration:
+* Convert PBR textures to KTX2 (Basis Universal)
+* Serve compressed textures through the GLTF pipeline
+* Pair with Draco-compressed geometry for full asset optimization
+
+ 
+ 
+ 
+
+
+This prototype intentionally prioritized cinematic motion and visual creative storytelling first; these optimizations are planned as a later refinement step.
 
 
