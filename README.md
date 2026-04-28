@@ -153,8 +153,8 @@ Composes the entire experience layout.
 * Structures layout using flexbox
 * Positions:
 
-  * UI (left)
-  * 3D model (center/right)
+* UI (left)
+* 3D model (center/right)
 * Handles loading state during 3D initialization
 
 ### Key Features:

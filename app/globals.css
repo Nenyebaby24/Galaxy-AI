@@ -6,7 +6,7 @@
    GLOBAL
 ========================= */
 :root {
-  background: #050505;
+  background: #071426;
   color: white;
 }
 
@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #050505;
+  background-color: #071426;
 }
 
 canvas {

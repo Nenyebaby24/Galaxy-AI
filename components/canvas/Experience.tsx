@@ -63,11 +63,30 @@ export default function Experience() {
       }}
       camera={{ position: [0, 0, 4], fov: 35 }}
     >
-      <ambientLight intensity={1.2} />
-      <directionalLight position={[5, 5, 5]} intensity={1.5} />
-      <directionalLight position={[-5, -5, -5]} intensity={0.5} />
+          <ambientLight intensity={2.3} />
 
-      <pointLight ref={lightRef} position={[0, 0, 2]} intensity={0} />
+            <directionalLight
+              position={[5,5,5]}
+              intensity={2.2}
+             />
+
+           <directionalLight
+             position={[-5,-5,-5]}
+             intensity={0.8}
+            />
+
+          {/* Bottom bounce light */}
+          <pointLight
+          position={[0,-4,2]}
+          intensity={2.8}
+          distance={14}
+           />
+
+          {/* Soft rim fill */}
+          <directionalLight
+            position={[0,2,-4]}
+            intensity={0.5}
+            />
 
       {/*  OPTION 1: Controlled Loader */}
       {!ready ? (
