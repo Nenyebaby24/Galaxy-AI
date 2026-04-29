@@ -63,6 +63,9 @@ export default function Experience() {
       }}
       camera={{ position: [0, 0, 4], fov: 35 }}
     >
+        /* I added to change make the canvas scene background blue to make it look more Samsung launch visuals */    
+       <color attach="background" args={['#102f75']} />
+           /* I increased the ambient light to 2.3  */
           <ambientLight intensity={2.3} />
 
             <directionalLight
@@ -82,7 +85,7 @@ export default function Experience() {
           distance={14}
            />
 
-          {/* Soft rim fill */}
+          {/* I added this Soft rim fill a rim light to create a thin highlight along edges/silhouette so the object separates from the background. */}
           <directionalLight
             position={[0,2,-4]}
             intensity={0.5}
