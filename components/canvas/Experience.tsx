@@ -51,7 +51,7 @@ export default function Experience() {
     <Canvas
       className="w-full h-screen"
       shadows
-      dpr={[1, 1.5]}
+      dpr={[1, 1.2]}
       flat
       linear
       gl={{
@@ -65,31 +65,23 @@ export default function Experience() {
     >
         /* I added to change make the canvas scene background blue to make it look more Samsung launch visuals */    
        <color attach="background" args={['#102f75']} />
-           /* I increased the ambient light to 2.3  */
-          <ambientLight intensity={2.3} />
+          <color attach="background" args={['#102f75']} />
 
-            <directionalLight
-              position={[5,5,5]}
-              intensity={2.2}
-             />
+{/* Base light */}
+<ambientLight intensity={1.8} />
 
-           <directionalLight
-             position={[-5,-5,-5]}
-             intensity={0.8}
-            />
+{/* Key light (main) */}
+<directionalLight
+  position={[5, 5, 5]}
+  intensity={2}
+/>
 
-          {/* Bottom bounce light */}
-          <pointLight
-          position={[0,-4,2]}
-          intensity={2.8}
-          distance={14}
-           />
-
-          {/* I added this Soft rim fill a rim light to create a thin highlight along edges/silhouette so the object separates from the background. */}
-          <directionalLight
-            position={[0,2,-4]}
-            intensity={0.5}
-            />
+{/* Bottom bounce (important for underside) */}
+<pointLight
+  position={[0, -3, 2]}
+  intensity={2}
+  distance={10}
+/>
 
       {/*  OPTION 1: Controlled Loader */}
       {!ready ? (

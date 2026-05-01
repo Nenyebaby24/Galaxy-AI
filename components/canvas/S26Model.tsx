@@ -92,20 +92,21 @@ export default function S26Model() {
     }
   }, [scene])
 
-  useFrame((state, delta) => {
-    if (!group.current) return
+  useFrame((state) => {
+  if (!group.current) return
 
-    const t = state.clock.elapsedTime
+  const t = state.clock.getElapsedTime()
 
-    group.current.position.y =
-      Math.sin(t * 1.1) * 0.08 +
-      Math.sin(t * 0.5) * 0.03
+  //  Single clean floating (no interference)
+  group.current.position.y = Math.sin(t * 0.9) * 0.06
 
-    group.current.rotation.y = t * 0.35
+  //  Stable rotation (time-based)
+  group.current.rotation.y = t * 0.35
 
-    group.current.rotation.x = Math.sin(t * 0.4) * 0.04
-    group.current.rotation.z = Math.sin(t * 0.3) * 0.02
-  })
+  //  Subtle tilt (low frequency = smooth)
+  group.current.rotation.x = Math.sin(t * 0.25) * 0.025
+  group.current.rotation.z = Math.sin(t * 0.2) * 0.015
+})
 
   return <group ref={group} />
 }
