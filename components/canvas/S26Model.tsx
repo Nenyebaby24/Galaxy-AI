@@ -98,7 +98,7 @@ export default function S26Model() {
   const t = state.clock.getElapsedTime()
 
   //  Single clean floating (no interference)
-  group.current.position.y = Math.sin(t * 0.9) * 0.06
+  group.current.position.y = Math.sin(t * 0.9) * 0.09
 
   //  Stable rotation (time-based)
   group.current.rotation.y = t * 0.35
