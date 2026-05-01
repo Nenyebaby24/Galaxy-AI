@@ -101,7 +101,7 @@ export default function S26Model() {
       Math.sin(t * 1.1) * 0.08 +
       Math.sin(t * 0.5) * 0.03
 
-    group.current.rotation.y += delta * 0.45
+    group.current.rotation.y = t * 0.35
 
     group.current.rotation.x = Math.sin(t * 0.4) * 0.04
     group.current.rotation.z = Math.sin(t * 0.3) * 0.02
